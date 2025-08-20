@@ -22,6 +22,7 @@ function App() {
 
   const [cart, setCart] = useState([]);
   const [total, setTotal] = useState(0);
+  const [quantity, setQuantity] = useState(1);
 
   function addToCart(article) {
     setCart((prevCart) => {
@@ -30,7 +31,7 @@ function App() {
       if (existingItem) {
         return prevCart.map((item) =>
           item.id === article.id
-            ? { ...item, quantity: item.quantity + 1 }
+            ? { ...item, quantity: item.quantity + quantity }
             : item
         );
       } else {
@@ -38,12 +39,13 @@ function App() {
           ...prevCart,
           {
             ...article,
-            quantity: 1,
+            quantity: quantity,
           },
         ];
       }
     });
-    setTotal((prevTotal) => prevTotal + article.price);
+    setTotal((prevTotal) => prevTotal + article.price * quantity);
+    setQuantity(1);
   }
 
   function decreaseQuantity(article) {
@@ -83,6 +85,12 @@ function App() {
           <div key={article.id}>
             <p>{article.title}</p>
             <p>{article.price} €</p>
+            <input
+              type="number"
+              min="1"
+              value={quantity}
+              onChange={(e) => setQuantity(Number(e.target.value))}
+            />
             <button type="button" onClick={() => addToCart(article)}>
               Ajouter au panier
             </button>

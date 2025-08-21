@@ -1,123 +1,18 @@
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import ItemsList from "./components/ItemsList/ItemsList";
+import { useContext } from "react";
+import { CartContext } from "./context/CartContext";
 
 function App() {
-  const list = [
-    {
-      id: 1,
-      title: "Banane",
-      price: 10,
-    },
-    {
-      id: 2,
-      title: "Tomate",
-      price: 5,
-    },
-    {
-      id: 3,
-      title: "Télévision",
-      price: 2,
-    },
-  ];
-
-  const [cart, setCart] = useState([]);
-  const [total, setTotal] = useState(0);
-  const [quantity, setQuantity] = useState(1);
-
-  function addToCart(article) {
-    setCart((prevCart) => {
-      const existingItem = prevCart.find((item) => item.id === article.id);
-
-      if (existingItem) {
-        return prevCart.map((item) =>
-          item.id === article.id
-            ? { ...item, quantity: item.quantity + quantity }
-            : item
-        );
-      } else {
-        return [
-          ...prevCart,
-          {
-            ...article,
-            quantity: quantity,
-          },
-        ];
-      }
-    });
-    setTotal((prevTotal) => prevTotal + article.price * quantity);
-    setQuantity(1);
-  }
-
-  function decreaseQuantity(article) {
-    setCart((prevCart) => {
-      const existingItem = prevCart.find((item) => item.id === article.id);
-
-      if (existingItem && existingItem.quantity > 1) {
-        return prevCart.map((item) =>
-          item.id === article.id
-            ? { ...item, quantity: item.quantity - 1 }
-            : item
-        );
-      } else {
-        return prevCart.filter((item) => item.id !== article.id);
-      }
-    });
-
-    setTotal((prevTotal) => prevTotal - article.price);
-  }
-
-  function deleteItem(item) {
-    const itemPrice = item.price;
-    const totalToRemove = itemPrice * item.quantity;
-    setCart((prevCart) => prevCart.filter((article) => article.id !== item.id));
-    setTotal((prevTotal) => prevTotal - totalToRemove);
-  }
-
+  const { cartLength } = useContext(CartContext);
   return (
     <>
       <nav>
         Aller voir votre cart : <Link to="cart">Cart</Link>
       </nav>
-      <div>
-        <p>Liste des articles :</p>
+      <p>Panier : {cartLength}</p>
 
-        {list.map((article) => (
-          <div key={article.id}>
-            <p>{article.title}</p>
-            <p>{article.price} €</p>
-            <input
-              type="number"
-              min="1"
-              value={quantity}
-              onChange={(e) => setQuantity(Number(e.target.value))}
-            />
-            <button type="button" onClick={() => addToCart(article)}>
-              Ajouter au panier
-            </button>
-          </div>
-        ))}
-
-        <p>Mon panier :</p>
-
-        <ul>
-          {cart.map((ele) => (
-            <li key={ele.title}>
-              {ele.title} = {ele.price} €{" "}
-              <button type="button" onClick={() => decreaseQuantity(ele)}>
-                -
-              </button>{" "}
-              Quantité : {ele.quantity}{" "}
-              <button type="button" onClick={() => addToCart(ele)}>
-                +
-              </button>
-              <button type="button" onClick={() => deleteItem(ele)}>
-                Retirer du panier
-              </button>
-            </li>
-          ))}
-        </ul>
-        <p>total : {total} €</p>
-      </div>
+      <ItemsList />
     </>
   );
 }

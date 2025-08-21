@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import ItemCard from "../ItemCard/ItemCard";
+import styles from "./ItemsList.module.css";
 
 function ItemsList() {
   const [products, setProducts] = useState([]);
@@ -14,7 +15,7 @@ function ItemsList() {
           throw new Error("Server error");
         }
         const data = await response.json();
-        setProducts(data.slice(0, 6));
+        setProducts(data.slice(8, 14));
       } catch (err) {
         setError(err);
       } finally {
@@ -35,11 +36,11 @@ function ItemsList() {
     );
 
   return (
-    <>
+    <div className={styles.listContainer}>
       {products.map((article) => (
         <ItemCard article={article} key={article.id} />
       ))}
-    </>
+    </div>
   );
 }
 

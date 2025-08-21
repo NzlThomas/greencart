@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { CartContext } from "../../context/CartContext";
 
@@ -33,7 +32,6 @@ function CartList() {
         </button>
         <p>total : {Math.round(total * 100) / 100} €</p>
       </div>
-      <Link to="/">Retourner à l'accueil</Link>
     </div>
   );
 }

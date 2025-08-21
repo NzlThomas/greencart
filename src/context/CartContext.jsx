@@ -8,43 +8,41 @@ const CartProvider = ({ children }) => {
   const [quantity, setQuantity] = useState(1);
 
   function addToCart(article) {
-    setCart((prevCart) => {
-      const existingItem = prevCart.find((item) => item.id === article.id);
+    const existingItem = cart.find((item) => item.id === article.id);
 
-      if (existingItem) {
-        return prevCart.map((item) =>
+    if (existingItem) {
+      setCart((prevCart) =>
+        prevCart.map((item) =>
           item.id === article.id
-            ? { ...item, quantity: item.quantity + quantity }
+            ? {
+                ...item,
+                quantity: item.quantity + quantity,
+              }
             : item
-        );
-      } else {
-        return [
-          ...prevCart,
-          {
-            ...article,
-            quantity: quantity,
-          },
-        ];
-      }
-    });
+        )
+      );
+    } else {
+      setCart((prevCart) => [...prevCart, { ...article, quantity: quantity }]);
+    }
+
     setTotal((prevTotal) => prevTotal + article.price * quantity);
     setQuantity(1);
   }
 
   function decreaseQuantity(article) {
-    setCart((prevCart) => {
-      const existingItem = prevCart.find((item) => item.id === article.id);
+    const existingItem = cart.find((item) => item.id === article.id);
 
-      if (existingItem && existingItem.quantity > 1) {
-        return prevCart.map((item) =>
+    if (existingItem && existingItem.quantity > 1) {
+      setCart((prevCart) =>
+        prevCart.map((item) =>
           item.id === article.id
             ? { ...item, quantity: item.quantity - 1 }
             : item
-        );
-      } else {
-        return prevCart.filter((item) => item.id !== article.id);
-      }
-    });
+        )
+      );
+    } else {
+      setCart((prevCart) => prevCart.filter((item) => item.id !== article.id));
+    }
 
     setTotal((prevTotal) => prevTotal - article.price);
   }

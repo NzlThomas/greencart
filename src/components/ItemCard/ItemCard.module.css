@@ -3,7 +3,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 300px;
+  width: 350px;
   padding: 3rem;
   border-radius: 8px;
   box-shadow: 0 4px 8px #00000014;
@@ -24,14 +24,9 @@
   color: white;
   font-size: 18px;
   font-weight: 600;
-  border: 3px solid var(--green-border);
+  border: 2px solid var(--green-border);
   border-radius: 25px;
   cursor: pointer;
-}
-
-.cartButton:hover {
-  background-color: var(--green-border);
-  transition: background-color ease 0.3s;
 }
 
 .productName {
@@ -47,10 +42,9 @@
 }
 
 .quantityInput {
-  width: 70%;
+  width: 50%;
   padding: 5px 6px;
   font-size: 16px;
-
   border: 1px solid #ccc;
   border-radius: 6px;
   transition: border-color 0.2s, box-shadow 0.2s;
@@ -63,14 +57,54 @@
   box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
 }
 
+.quantityFlex {
+  margin-top: 0.4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.quantityAdjust input {
+  margin: 0 0.5rem;
+}
+
+.quantityAdjust button {
+  padding: 0.5rem 1rem;
+  background-color: var(--main-green);
+  color: white;
+  font-size: 20px;
+  font-weight: 600;
+  border: 2px solid var(--green-border);
+  border-radius: 10px;
+  cursor: pointer;
+}
+
 @media (min-width: 1200px) {
   .itemCard {
     width: 350px;
-    height: 450px;
+    height: 500px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     padding: 20px;
     box-sizing: border-box;
+  }
+
+  .quantityInput {
+    width: 50%;
+  }
+
+  .quantityFlex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .cartButton:hover {
+    background-color: var(--green-border);
+    transition: background-color ease 0.3s;
   }
 }

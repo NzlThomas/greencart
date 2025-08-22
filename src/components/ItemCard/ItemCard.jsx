@@ -14,13 +14,37 @@ function ItemCard({ article }) {
       />
       <p className={styles.productName}>{article.title}</p>
       <p className={styles.productPrice}>{article.price}€</p>
-      <input
-        type="number"
-        min="1"
-        value={quantity}
-        onChange={(e) => setQuantity(Number(e.target.value))}
-        className={styles.quantityInput}
-      />
+      <div className={styles.quantityFlex}>
+        <p>Quantité :</p>
+        <div className={styles.quantityAdjust}>
+          <button
+            type="button"
+            onClick={() =>
+              setQuantity((prevQty) => (prevQty > 1 ? prevQty - 1 : 1))
+            }
+            className={styles.quantityButton}
+          >
+            -
+          </button>
+          <input
+            type="number"
+            min="1"
+            value={quantity}
+            onChange={(e) => setQuantity(Number(e.target.value))}
+            className={styles.quantityInput}
+            name="qty"
+          />
+
+          <button
+            type="button"
+            onClick={() => setQuantity((prevQty) => prevQty + 1)}
+            className={styles.quantityButton}
+          >
+            +
+          </button>
+        </div>
+      </div>
+
       <button
         type="button"
         onClick={() => addToCart(article)}

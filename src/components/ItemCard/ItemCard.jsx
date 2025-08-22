@@ -29,10 +29,13 @@ function ItemCard({ article }) {
           <input
             type="number"
             min="1"
-            value={quantity}
+            value={quantity === 0 ? "" : quantity}
             onChange={(e) => setQuantity(Number(e.target.value))}
             className={styles.quantityInput}
             name="qty"
+            onBlur={() => {
+              if (quantity === 0) setQuantity(1);
+            }}
           />
 
           <button

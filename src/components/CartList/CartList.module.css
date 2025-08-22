@@ -134,6 +134,10 @@
   transform: translateY(-50%);
 }
 
+.isEmptyChild {
+  font-size: 20px;
+}
+
 .gridContainer {
   margin-top: 2rem;
 }

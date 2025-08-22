@@ -1,0 +1,13 @@
+.footer {
+  text-align: center;
+  padding: 20px 0;
+  font-size: 0.9rem;
+  color: white;
+  background-color: var(--main-green);
+  font-family: "Roboto", sans-serif;
+}
+
+.footer a {
+  color: white;
+  font-weight: 500;
+}

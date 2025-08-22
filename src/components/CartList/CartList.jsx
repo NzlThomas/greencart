@@ -17,6 +17,7 @@ function CartList() {
 
   function handleOrder() {
     alert("Merci pour votre commande fictive !");
+    emptyCart();
   }
 
   return (

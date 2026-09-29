@@ -22,7 +22,6 @@ function ItemsList() {
         const data = await response.json();
         setProducts(data.slice(8, 17));
       } catch (err) {
-        console.log(err);
         setError(err);
       } finally {
         setLoading(false);

@@ -14,9 +14,9 @@ function Navbar() {
         <Link to="/" className={styles.title}>
           <IoIosLeaf size={30} />
           GreenCart
-        </Link>
-        <Link to="/" className={styles.navLink}>
-          <HiHome color="white" size={30} /> Accueil
+          <span className={styles.navLink}>
+            <HiHome color="white" size={30} /> Accueil
+          </span>
         </Link>
       </div>
 
@@ -25,6 +25,7 @@ function Navbar() {
         {cartLength > 0 && (
           <span className={styles.cartBadge}>{cartLength}</span>
         )}
+        <span className={styles.srOnly}>Panier</span>
       </Link>
     </nav>
   );

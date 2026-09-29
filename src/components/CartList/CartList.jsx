@@ -22,6 +22,7 @@ function CartList() {
 
   return (
     <>
+      <h1 className={styles.srOnly}>Votre panier</h1>
       {cartLength !== 0 ? (
         <div className={styles.gridContainer}>
           <div className={styles.cartListContainer}>
@@ -29,7 +30,7 @@ function CartList() {
               <div key={ele.title} className={styles.productContainer}>
                 <div className={styles.imgCardContainer}>
                   <img
-                    alt={ele.title}
+                    alt={`Photo de ${ele.title}`}
                     src={ele.image}
                     className={styles.productImage}
                   />

@@ -1,9 +1,8 @@
-# 🛒 GreenCart
+# GreenCart
 
-## 🎯 Objectif du projet
+GreenCart est une application simulant le système de panier d'un site de e-commerce fictif.
 
-Ce projet est une application front-end d’entraînement développée avec **React**.  
-Il s’agit d’un faux site e-commerce ("GreenCart") permettant de :
+## Fonctionnalités
 
 - afficher des produits fetchés de la [Fake Store API](https://fakestoreapi.com/)
 - rechercher des produits grâce à une barre de recherche
@@ -12,11 +11,34 @@ Il s’agit d’un faux site e-commerce ("GreenCart") permettant de :
 - gérer les quantités de chaque article du panier
 - afficher un récapitulatif du prix de la commande
 
----
+![Aperçu de l'application](public/preview.png)
 
-## 🛠️ Stack utilisée
+## Stack
 
-- **React** (Vite)
-- **React Router** pour la navigation
-- **Context API** pour la gestion du panier
-- **CSS Modules** pour le style
+- **React**
+- **React Router DOM**
+- **Context API**
+- **React Icons**
+- **CSS Modules**
+
+## Installation
+
+### Cloner le projet
+
+```bash
+git clone git@github.com:NzlThomas/greencart.git
+```
+
+### Installer les dépendances
+
+A la racine du projet :
+
+```bash
+npm i
+```
+
+### Lancer le frontend
+
+```bash
+npm run dev
+```

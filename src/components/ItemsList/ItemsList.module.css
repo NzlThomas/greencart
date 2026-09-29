@@ -1,3 +1,15 @@
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 .listContainer {
   display: flex;
   flex-direction: column;
@@ -19,7 +31,11 @@
   padding: 5px 6px;
   font-size: 16px;
   border: 1px solid #ccc;
-  border-radius: 6px;
+  border-radius: 9999px;
+}
+
+.searchInput::placeholder {
+  padding-left: 10px;
 }
 
 .searchContainer {
@@ -31,11 +47,179 @@
   gap: 0.5rem;
 }
 
+.errorContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  align-items: center;
+  gap: 1rem;
+}
+
+.seeMore {
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.link {
+  color: rgb(0, 119, 255);
+  text-decoration: underline;
+}
+
+.seeMore:hover {
+  text-decoration: underline;
+}
+
+.errorMessage {
+  text-align: center;
+  width: 95%;
+  margin-bottom: 1.5rem;
+}
+
+.detailsMessage {
+  font-style: italic;
+  width: 90%;
+  font-size: 15px;
+  text-align: center;
+}
+
+.loaderContainer {
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+  align-items: center;
+}
+
+.loaderContainer p {
+  font-size: 17px;
+}
+
+.loader {
+  width: 35px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 4px solid var(--main-green);
+  animation:
+    l20-1 0.8s infinite linear alternate,
+    l20-2 1.6s infinite linear;
+}
+@keyframes l20-1 {
+  0% {
+    clip-path: polygon(50% 50%, 0 0, 50% 0%, 50% 0%, 50% 0%, 50% 0%, 50% 0%);
+  }
+  12.5% {
+    clip-path: polygon(
+      50% 50%,
+      0 0,
+      50% 0%,
+      100% 0%,
+      100% 0%,
+      100% 0%,
+      100% 0%
+    );
+  }
+  25% {
+    clip-path: polygon(
+      50% 50%,
+      0 0,
+      50% 0%,
+      100% 0%,
+      100% 100%,
+      100% 100%,
+      100% 100%
+    );
+  }
+  50% {
+    clip-path: polygon(
+      50% 50%,
+      0 0,
+      50% 0%,
+      100% 0%,
+      100% 100%,
+      50% 100%,
+      0% 100%
+    );
+  }
+  62.5% {
+    clip-path: polygon(
+      50% 50%,
+      100% 0,
+      100% 0%,
+      100% 0%,
+      100% 100%,
+      50% 100%,
+      0% 100%
+    );
+  }
+  75% {
+    clip-path: polygon(
+      50% 50%,
+      100% 100%,
+      100% 100%,
+      100% 100%,
+      100% 100%,
+      50% 100%,
+      0% 100%
+    );
+  }
+  100% {
+    clip-path: polygon(
+      50% 50%,
+      50% 100%,
+      50% 100%,
+      50% 100%,
+      50% 100%,
+      50% 100%,
+      0% 100%
+    );
+  }
+}
+@keyframes l20-2 {
+  0% {
+    transform: scaleY(1) rotate(0deg);
+  }
+  49.99% {
+    transform: scaleY(1) rotate(135deg);
+  }
+  50% {
+    transform: scaleY(-1) rotate(0deg);
+  }
+  100% {
+    transform: scaleY(-1) rotate(-135deg);
+  }
+}
+
 @media (min-width: 1200px) {
   .listContainer {
     display: grid;
     grid-template-columns: repeat(3, 400px);
     grid-template-rows: repeat(2, 1fr);
+  }
+
+  .loaderContainer p {
+    font-size: 23px;
+  }
+
+  .loader {
+    width: 50px;
+    border: 6px solid var(--main-green);
+  }
+
+  .loaderContainer {
+    font-size: 20px;
+  }
+
+  .errorMessage {
+    font-size: 22px;
+  }
+
+  .seeMore {
+    font-size: 20px;
+  }
+
+  .detailsMessage {
+    font-size: 19px;
   }
 
   .searchInput {

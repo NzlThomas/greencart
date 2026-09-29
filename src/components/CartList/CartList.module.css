@@ -1,3 +1,15 @@
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 .cartListContainer {
   display: flex;
   flex-direction: column;
@@ -10,7 +22,7 @@
   flex-direction: column;
   align-items: center;
   background-color: rgb(255, 255, 255);
-  width: 350px;
+  width: 80%;
   padding: 1rem;
   border-radius: 8px;
   box-shadow: 0 4px 8px #00000014;
@@ -27,14 +39,14 @@
   align-items: center;
   gap: 1rem;
   font-size: 15px;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
   font-weight: 500;
 }
 
 .productPrice {
   font-size: 17px;
   font-weight: 700;
-  margin-bottom: 2rem;
+  margin-bottom: 0.5rem;
 }
 
 .quantityContainer {
@@ -42,14 +54,14 @@
   align-items: center;
   justify-content: center;
   gap: 0.6rem;
-  margin-bottom: 3rem;
+  margin-bottom: 1.5rem;
 }
 
 .quantityButton {
-  padding: 0.5rem 1.5rem;
+  padding: 0.3rem 1rem;
   background-color: var(--main-green);
   color: white;
-  font-size: 20px;
+  font-size: 15px;
   font-weight: 600;
   border: 2px solid var(--green-border);
   border-radius: 10px;
@@ -72,6 +84,7 @@
   font-weight: 600;
   border-radius: 10px;
   cursor: pointer;
+  margin-bottom: 10px;
 }
 
 .emptyCart {
@@ -98,11 +111,12 @@
 
 .orderButton {
   color: white;
+  font-size: 15px;
   font-weight: 500;
   background-color: var(--main-green);
   border: 2px solid var(--green-border);
   margin-top: 1rem;
-  padding: 1.5rem;
+  padding: 1rem 1.5rem;
   border-radius: 30px;
   box-shadow: 0 4px 8px #00000014;
   margin-bottom: 2.5rem;
@@ -116,9 +130,10 @@
 }
 
 .isEmptyContainer {
+  flex: 1;
   display: flex;
-  flex-direction: column;
   align-items: center;
+  justify-content: center;
 }
 
 .isEmpty {
@@ -127,11 +142,7 @@
   align-items: center;
   justify-content: center;
   gap: 2rem;
-  margin: 0;
-  position: absolute;
-  top: 50%;
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
+  height: 100%;
 }
 
 .isEmptyChild {
@@ -148,6 +159,30 @@
   flex-direction: column;
   align-items: center;
   gap: 0.5rem;
+}
+
+.removeProduct:hover {
+  color: var(--remove-yellow);
+  background-color: white;
+  transition: background-color ease 0.1s;
+}
+
+.orderButton:hover {
+  background-color: white;
+  color: var(--green-border);
+  transition: background-color ease 0.1s;
+}
+
+.quantityButton:hover {
+  background-color: white;
+  color: var(--green-border);
+  transition: background-color ease 0.1s;
+}
+
+.emptyCart:hover {
+  color: var(--red-border);
+  background-color: white;
+  transition: background-color ease 0.1s;
 }
 
 @media (min-width: 1200px) {
@@ -173,6 +208,10 @@
     position: sticky;
     top: 10rem;
     align-self: start;
+  }
+
+  .orderButton {
+    font-size: 17px;
   }
 
   .emptyCart {

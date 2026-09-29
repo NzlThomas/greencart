@@ -8,7 +8,7 @@ function ItemCard({ article }) {
   return (
     <div key={article.id} className={styles.itemCard}>
       <img
-        alt={article.title}
+        alt={`Photo de ${article.title}`}
         src={article.image}
         className={styles.productImage}
       />
@@ -26,12 +26,16 @@ function ItemCard({ article }) {
           >
             -
           </button>
+          <label className={styles.srOnly} htmlFor={`${article.id}`}>
+            Quantité pour {article.title}
+          </label>
           <input
             type="number"
             min="1"
             value={quantity === 0 ? "" : quantity}
             onChange={(e) => setQuantity(Number(e.target.value))}
             className={styles.quantityInput}
+            id={`${article.id}`}
             name="qty"
             onBlur={() => {
               if (quantity === 0) setQuantity(1);

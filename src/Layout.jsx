@@ -7,9 +7,11 @@ function Layout() {
   return (
     <div className={styles.layout}>
       <Navbar />
-      <main>
+
+      <main className={styles.main}>
         <Outlet />
       </main>
+
       <Footer />
     </div>
   );
